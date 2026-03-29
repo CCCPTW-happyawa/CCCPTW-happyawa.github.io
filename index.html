@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的個人博客 | My Personal Blog</title>
+    <style>
+        /* --- 1. 基礎設定與變數 (CSS Variables) --- */
+        :root {
+            --primary-color: #3498db;       /* 主色調：藍色 */
+            --text-color: #333;             /* 主要文字顏色 */
+            --bg-color: #f4f7f6;            /* 背景顏色 */
+            --card-bg: #ffffff;             /* 卡片背景 */
+            --secondary-text: #666;         /* 次要文字 */
+            --border-radius: 8px;           /* 圓角大小 */
+            --container-width: 1100px;      /* 內容最大寬度 */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- 2. 通用佈局容器 --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 3. 導航欄 (Header) --- */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+        }
+
+        /* 手機版選單按鈕 (預設隱藏) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- 4. 主要內容區 (Main Layout) --- */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* 左側文章列表 */
+        .blog-posts {
+            flex: 3; /* 佔 3 份寬度 */
+        }
+
+        /* 右側側邊欄 */
+        .sidebar {
+            flex: 1; /* 佔 1 份寬度 */
+        }
+
+        /* --- 5. 文章卡片樣式 --- */
+        .post-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            margin-bottom: 10px;
+        }
+
+        .post-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .post-excerpt {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        /* --- 6. 側邊欄組件 --- */
+        .widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+        }
+
+        .category-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd; /* 佔位色 */
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .profile-text {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--secondary-text);
+        }
+
+        /* --- 7. 頁腳 (Footer) --- */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* --- 8. 響應式設計 (RWD) --- */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column; /* 手機版改為垂直排列 */
+            }
+
+            .nav-links {
+                display: none; /* 預設隱藏選單 */
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex; /* 點擊後顯示 */
+            }
+
+            .menu-toggle {
+                display: block; /* 手機版顯示漢堡選單 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">MyBlog.</a>
+                <div class="menu-toggle" id="mobile-menu">☰</div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">關於我</a></li>
+                    <li><a href="#">文章列表</a></li>
+                    <li><a href="#">聯絡方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <div class="container main-content">
+        
+        <!-- 左側：文章列表 -->
+        <main class="blog-posts">
+            
+            <!-- 文章 1 -->
+            <article class="post-card">
+                <div class="post-meta">2023 年 10 月 24 日 | 技術筆記</div>
+                <h2 class="post-title"><a href="#">如何開始學習 HTML 與 CSS</a></h2>
+                <p class="post-excerpt">
+                    網頁開發的第一步總是從基礎開始。這篇文章將介紹如何建立你的第一個網頁，以及理解區塊元素與行內元素的區別...
+                </p>
+                <a href="#" class="read-more">閱讀全文 →</a>
+            </article>
+
+            <!-- 文章 2 -->
+            <article class="post-card">
+                <div class="post-meta">2023 年 10 月 20 日 | 生活隨筆</div>
+                <h2 class="post-title"><a href="#">週末的咖啡廳探險</a></h2>
+                <p class="post-excerpt">
+                    在這個忙碌的城市中，尋找一個安靜的角落享受一杯好咖啡是一種療癒。上週末我去了幾家隱藏在巷弄裡的咖啡廳...
+                </p>
+                <a href="#" class="read-more">閱讀全文 →</a>
+            </article>
+
+            <!-- 文章 3 -->
+            <article class="post-card">
+                <div class="post-meta">2023 年 10 月 15 日 | 攝影作品</div>
+                <h2 class="post-title"><a href="#">秋天的色彩：攝影集分享</a></h2>
+                <p class="post-excerpt">
+                    金黃的銀杏與紅色的楓葉，秋天總是帶來最豐富的視覺饗宴。這裡是我最近拍攝的一些照片，希望能帶給你一點好心情。
+                </p>
+                <a href="#" class="read-more">閱讀全文 →</a>
+            </article>
+
+        </main>
+
+        <!-- 右側：側邊欄 -->
+        <aside class="sidebar">
+            
+            <!-- 關於我 -->
+            <div class="widget">
+                <h3 class="widget-title">關於作者</h3>
+                <!-- 這裡可以換成你的照片連結 -->
+                <img src="https://via.placeholder.com/150" alt="作者頭像" class="profile-img">
+                <p class="profile-text">
+                    你好！我是小明，一名熱愛編程與寫作的自由工作者。這裡是我的數位花園，歡迎常來坐坐。
+                </p>
+            </div>
+
+            <!-- 分類目錄 -->
+            <div class="widget">
+                <h3 class="widget-title">分類目錄</h3>
+                <ul class="category-list">
+                    <li><a href="#">技術筆記 (12)</a></li>
+                    <li><a href="#">生活隨筆 (8)</a></li>
+                    <li><a href="#">攝影作品 (5)</a></li>
+                    <li><a href="#">書單分享 (3)</a></li>
+                </ul>
+            </div>
+
+            <!-- 熱門標籤 -->
+            <div class="widget">
+                <h3 class="widget-title">標籤雲</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <a href="#" style="background:#eee; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">HTML</a>
+                    <a href="#" style="background:#eee; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">CSS</a>
+                    <a href="#" style="background:#eee; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">JavaScript</a>
+                    <a href="#" style="background:#eee; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">生活</a>
+                    <a href="#" style="background:#eee; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">旅遊</a>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My Personal Blog. All Rights Reserved.</p>
+            <p>Designed with ❤️ by You</p>
+        </div>
+    </footer>
+
+    <!-- 簡單的 JavaScript 用於手機選單 -->
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
