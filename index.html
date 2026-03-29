@@ -732,96 +732,97 @@
 
         /* Hero 圖片區域 */
         .hero-section {
-            position: relative;
-            margin-bottom: var(--spacing-12);
-            border-radius: 4px;
-            overflow: hidden;
+    position: relative;
+    margin-bottom: var(--spacing-12);
+    border-radius: 4px;
+    overflow: hidden;
         }
 
-        .hero-image-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    height: 500px;  /* 從 800px 改為 500px，更適合橫幅圖片比例 */
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
         }
 
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 改為 contain，確保圖片完整顯示不被裁剪 */
+    opacity: 1;  /* 改為 1，保持圖片原色 */
+    background: #000000;  /* 黑色背景填充空白區域 */
         }
 
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                transparent 50%,
-                rgba(9, 9, 11, 0.8) 100%
-            );
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        rgba(24, 24, 24, 0.9) 100%  /* 加深底部遮罩，讓文字更清晰 */
+    );
         }
 
-        .hero-bracket {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            border-color: var(--color-blue-500);
-            opacity: 0.8;
-            z-index: 10;
+.hero-bracket {
+    position: absolute;
+    width: 20px;  /* 稍微加大 */
+    height: 20px;
+    border-color: #ffffff;  /* 改為白色，配合圖片風格 */
+    opacity: 0.9;
+    z-index: 10;
         }
 
-        .hero-bracket-top-left {
-            top: 0;
-            left: 0;
-            border-top-width: 2px;
-            border-left-width: 2px;
+.hero-bracket-top-left {
+    top: 10px;
+    left: 10px;
+    border-top-width: 2px;
+    border-left-width: 2px;
         }
 
-        .hero-bracket-top-right {
-            top: 0;
-            right: 0;
-            border-top-width: 2px;
-            border-right-width: 2px;
+.hero-bracket-top-right {
+    top: 10px;
+    right: 10px;
+    border-top-width: 2px;
+    border-right-width: 2px;
         }
 
-        .hero-bracket-bottom-left {
-            bottom: 0;
-            left: 0;
-            border-bottom-width: 2px;
-            border-left-width: 2px;
+.hero-bracket-bottom-left {
+    bottom: 10px;
+    left: 10px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
         }
 
-        .hero-bracket-bottom-right {
-            bottom: 0;
-            right: 0;
-            border-bottom-width: 2px;
-            border-right-width: 2px;
+.hero-bracket-bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
         }
 
-        .hero-title-container {
-            position: absolute;
-            bottom: var(--spacing-6);
-            left: var(--spacing-6);
-            z-index: 20;
+.hero-title-container {
+    position: absolute;
+    bottom: var(--spacing-6);
+    left: var(--spacing-6);
+    z-index: 20;
         }
 
-        .hero-title-overview {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
-            color: var(--text-primary);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-            margin-bottom: var(--spacing-2);
+.hero-title-overview {
+    font-size: 2.5rem;  /* 加大標題 */
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: #ffffff;  /* 改為白色，配合圖片主題 */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    margin-bottom: var(--spacing-2);
         }
 
-        .hero-subtitle {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+.hero-subtitle {
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
         }
 
         .content-section {
@@ -1282,7 +1283,7 @@
                 <section class="hero-section">
                     <div class="hero-image-container">
                         <div class="hero-grid-bg"></div>
-                        <img src="https://images.unsplash.com/photo-1542259681-d4cd71d2a167?w=1280&h=400&fit=crop" 
+                        <img src="https://media.discordapp.net/attachments/1353716846205075466/1483179023432421427/image.png?ex=69ca205b&is=69c8cedb&hm=3418572888ce956c55c09a5bc768e2303e99aeeec97fb867a211234339bce7b8&=&format=webp&quality=lossless&width=1552&height=873" 
                              alt="概述封面圖" 
                              class="hero-image">
                         <div class="hero-overlay"></div>
@@ -1312,11 +1313,11 @@
                         </h2>
                         
                         <div class="intro-text">
-                            <p>歡迎來到奧地利 ODL 華人團的官方文檔中心。本頁面提供團體的完整概述，包括組織架構、成員資訊、活動記錄等核心內容。</p>
+                            <p>歡迎來到奧地利 ODL 華人團的官方概述。本頁面提供團體的完整概述，包括組織架構、成員資訊、活動記錄等核心內容。</p>
                             
-                            <p>奧地利 ODL 華人團成立於遊戲早期，致力於為華語玩家提供一個友好的遊戲環境。我們定期組織團隊活動、訓練課程，並積極參與遊戲內的各種挑戰。</p>
+                            <p>奧地利 ODL 華人團成立於2024年，致力於為華語玩家提供一個友好的遊戲環境。我們定期組織團隊活動、訓練課程，並積極參與遊戲內的各種挑戰。</p>
                             
-                            <p>無論您是新加入的成員還是資深玩家，都可以在這裡找到所需的資訊。我們的文檔會持續更新，確保內容的準確性和完整性。</p>
+                            <p>無論您是新加入的成員還是資深玩家，都可以在這裡找到所需的資訊。我們的文檔會繼續更新，確保內容的準確性和完整性。</p>
                         </div>
 
                         <div class="tag-container">
