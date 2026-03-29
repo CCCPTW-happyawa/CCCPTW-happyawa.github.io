@@ -1,0 +1,1481 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奧地利 ODL 華人團 - Wiki 文檔中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #09090B;
+            --bg-secondary: #18181B;
+            --bg-tertiary: #27272A;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-emphasized: rgba(255, 255, 255, 0.16);
+            --text-primary: #FAFAFA;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
+            
+            --color-blue-500: #3B82F6;
+            --color-orange-500: #F97316;
+            --color-red-500: #EF4444;
+            --color-cyan-500: #06B6D4;
+            --color-green-500: #22C55E;
+            --color-purple-500: #A855F7;
+            --color-yellow-500: #EAB308;
+            --color-teal-500: #14B8A6;
+            
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+            
+            --transition-fast: 0.15s;
+            --transition-moderate: 0.25s;
+            --transition-slow: 0.3s;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.625;
+            min-height: 100vh;
+        }
+
+        /* 頁面切換控制 */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 頂部導航欄 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-4) var(--spacing-8);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: var(--bg-primary);
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            text-decoration: none;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .navbar-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .navbar-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: var(--spacing-2) var(--spacing-3);
+            min-width: 280px;
+        }
+
+        .search-box svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            outline: none;
+            width: 100%;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* 主容器 */
+        .container {
+            display: flex;
+            max-width: 1920px;
+            margin: 0 auto;
+            min-height: calc(100vh - 73px);
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            width: 220px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 73px;
+            height: calc(100vh - 73px);
+            overflow-y: auto;
+        }
+
+        .sidebar-section {
+            margin-bottom: var(--spacing-4);
+        }
+
+        .sidebar-title {
+            font-size: 0.625rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: var(--spacing-3);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+
+        .sidebar-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .sidebar-section:hover .sidebar-title::after {
+            opacity: 1;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-1);
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-2) var(--spacing-3);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+            border-left: 2px solid transparent;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .sidebar-nav a:hover {
+            background: var(--border-color);
+            border-left-color: var(--item-color, var(--color-blue-500));
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav a:hover .sidebar-item-icon {
+            border-color: color-mix(in srgb, var(--item-color, var(--color-blue-500)) 40%, transparent);
+            background: color-mix(in srgb, var(--item-color, var(--color-blue-500)) 10%, transparent);
+            color: var(--item-color, var(--color-blue-500));
+        }
+
+        .sidebar-nav a:hover .sidebar-item-text {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .sidebar-nav a:hover .sidebar-item-chevron {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--text-muted);
+        }
+
+        .sidebar-nav a.active {
+            border-left-color: var(--item-color, var(--color-blue-500));
+            background: var(--border-color);
+        }
+
+        .sidebar-item-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all var(--transition-fast);
+            color: var(--text-muted);
+        }
+
+        .sidebar-item-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sidebar-item-text {
+            flex: 1;
+            white-space: nowrap;
+            transition: color var(--transition-fast);
+        }
+
+        .sidebar-item-chevron {
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all var(--transition-fast);
+        }
+
+        /* 主內容區 */
+        .main-content {
+            flex: 1;
+            padding: var(--spacing-8);
+            overflow-y: auto;
+        }
+
+        .content-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Hero 區域 */
+        .hero {
+            position: relative;
+            margin-bottom: var(--spacing-10);
+            padding-bottom: var(--spacing-8);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: calc(var(--spacing-2) * -1);
+            right: 0;
+            width: 80px;
+            height: 80px;
+            border-top: 2px solid var(--border-color);
+            border-right: 2px solid var(--border-color);
+        }
+
+        .hero-grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-3);
+            animation: heroFadeIn 0.6s ease-out;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 768px;
+            animation: heroFadeIn 0.6s ease-out 0.1s both;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 導航卡片網格 */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-5);
+            margin-bottom: var(--spacing-10);
+        }
+
+        @media (min-width: 768px) {
+            .nav-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 導航卡片 */
+        .nav-card {
+            position: relative;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .nav-card-bracket {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: var(--chakra-colors-color-palette-500);
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+
+        .nav-card-bracket-top-left {
+            top: 0;
+            left: 0;
+            border-top-width: 2px;
+            border-left-width: 2px;
+        }
+
+        .nav-card-bracket-top-right {
+            top: 0;
+            right: 0;
+            border-top-width: 2px;
+            border-right-width: 2px;
+        }
+
+        .nav-card-bracket-bottom-left {
+            bottom: 0;
+            left: 0;
+            border-bottom-width: 2px;
+            border-left-width: 2px;
+        }
+
+        .nav-card-bracket-bottom-right {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+        }
+
+        .nav-card:hover .nav-card-bracket {
+            opacity: 1;
+            width: 16px;
+            height: 16px;
+        }
+
+        .nav-card-inner {
+            position: relative;
+            border: 1px solid var(--border-color);
+            padding: var(--spacing-8);
+            height: 100%;
+            transition: all var(--transition-moderate) ease-out;
+            overflow: hidden;
+        }
+
+        .nav-card:hover .nav-card-inner {
+            border-color: var(--chakra-colors-color-palette-500);
+        }
+
+        .nav-card-gradient {
+            mix-blend-mode: soft-light;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--chakra-colors-color-palette-500) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition-slow) ease-out;
+            pointer-events: none;
+        }
+
+        .nav-card:hover .nav-card-gradient {
+            opacity: 1;
+        }
+
+        .nav-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            height: 100%;
+            position: relative;
+        }
+
+        .nav-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+
+        .nav-card-icon-box {
+            position: relative;
+            padding: var(--spacing-3);
+            background: color-mix(in srgb, var(--chakra-colors-color-palette-500) 10%, transparent);
+            border: 1px solid color-mix(in srgb, var(--chakra-colors-color-palette-500) 30%, transparent);
+            transition: all 0.25s;
+        }
+
+        .nav-card:hover .nav-card-icon-box {
+            background: color-mix(in srgb, var(--chakra-colors-color-palette-500) 20%, transparent);
+            border-color: var(--chakra-colors-color-palette-500);
+        }
+
+        .nav-card-icon {
+            height: 32px;
+            width: 32px;
+            color: var(--chakra-colors-color-palette-500);
+        }
+
+        .nav-card-icon svg {
+            height: 1em;
+            width: 1em;
+        }
+
+        .nav-card-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, var(--chakra-colors-color-palette-500) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .nav-card:hover .nav-card-glow {
+            opacity: 0.15;
+        }
+
+        .nav-card-title {
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            font-family: var(--font-mono);
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        .nav-card-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.625;
+            flex: 1;
+        }
+
+        .nav-card-footer {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-1);
+            margin-top: auto;
+        }
+
+        .nav-card-footer-text {
+            color: var(--chakra-colors-color-palette-500);
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-card-chevron {
+            color: var(--chakra-colors-color-palette-500);
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+
+        .nav-card:hover .nav-card-chevron {
+            transform: translateX(4px);
+        }
+
+        /* 分隔線 */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .section-divider-line {
+            height: 1px;
+            flex: 1;
+            max-width: 40px;
+            background: var(--border-emphasized);
+        }
+
+        .section-divider-line-full {
+            height: 1px;
+            flex: 1;
+            background: var(--border-color);
+        }
+
+        .section-divider-text {
+            color: var(--text-secondary);
+            font-size: 0.625rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* 頁腳 */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: var(--spacing-4) var(--spacing-8);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-6);
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: var(--spacing-4);
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                padding: var(--spacing-4);
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-card-inner {
+                padding: var(--spacing-6);
+            }
+        }
+
+        /* 自定義滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--text-muted);
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--bg-secondary);
+        }
+
+        /* 顏色主題類 */
+        .theme-blue {
+            --chakra-colors-color-palette-500: var(--color-blue-500);
+        }
+
+        .theme-orange {
+            --chakra-colors-color-palette-500: var(--color-orange-500);
+        }
+
+        .theme-red {
+            --chakra-colors-color-palette-500: var(--color-red-500);
+        }
+
+        .theme-cyan {
+            --chakra-colors-color-palette-500: var(--color-cyan-500);
+        }
+
+        .theme-green {
+            --chakra-colors-color-palette-500: var(--color-green-500);
+        }
+
+        .theme-purple {
+            --chakra-colors-color-palette-500: var(--color-purple-500);
+        }
+
+        .theme-yellow {
+            --chakra-colors-color-palette-500: var(--color-yellow-500);
+        }
+
+        .theme-teal {
+            --chakra-colors-color-palette-500: var(--color-teal-500);
+        }
+
+        /* 純文字側邊欄項目 */
+        .sidebar-nav-text-only {
+            padding-left: var(--spacing-8) !important;
+            color: var(--text-muted) !important;
+            font-style: italic;
+        }
+
+        .sidebar-nav-text-only:hover {
+            background: transparent !important;
+            border-left-color: transparent !important;
+            color: var(--text-muted) !important;
+        }
+
+        .sidebar-nav-text-only .sidebar-item-icon {
+            display: none !important;
+        }
+
+        .sidebar-nav-text-only .sidebar-item-chevron {
+            display: none !important;
+        }
+
+        /* ===== Overview 頁面樣式 ===== */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-4) var(--spacing-8);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--text-primary);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-separator {
+            color: var(--border-color);
+        }
+
+        /* Hero 圖片區域 */
+        .hero-section {
+            position: relative;
+            margin-bottom: var(--spacing-12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                transparent 50%,
+                rgba(9, 9, 11, 0.8) 100%
+            );
+        }
+
+        .hero-bracket {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-color: var(--color-blue-500);
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        .hero-bracket-top-left {
+            top: 0;
+            left: 0;
+            border-top-width: 2px;
+            border-left-width: 2px;
+        }
+
+        .hero-bracket-top-right {
+            top: 0;
+            right: 0;
+            border-top-width: 2px;
+            border-right-width: 2px;
+        }
+
+        .hero-bracket-bottom-left {
+            bottom: 0;
+            left: 0;
+            border-bottom-width: 2px;
+            border-left-width: 2px;
+        }
+
+        .hero-bracket-bottom-right {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+        }
+
+        .hero-title-container {
+            position: absolute;
+            bottom: var(--spacing-6);
+            left: var(--spacing-6);
+            z-index: 20;
+        }
+
+        .hero-title-overview {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            color: var(--text-primary);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .hero-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-8);
+        }
+
+        @media (min-width: 768px) {
+            .content-section {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .intro-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: var(--spacing-8);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--spacing-6);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+
+        .section-title svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-blue-500);
+        }
+
+        .intro-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .intro-text p {
+            margin-bottom: var(--spacing-4);
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: var(--spacing-6);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .info-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-3);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .info-card-title svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-blue-500);
+        }
+
+        .info-card-content {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.625;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-2);
+            margin-top: var(--spacing-4);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-1);
+            padding: var(--spacing-1) var(--spacing-3);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .tag svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-2) var(--spacing-4);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            margin-bottom: var(--spacing-6);
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+            border-color: var(--color-blue-500);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 動畫 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro-section,
+        .info-card {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .info-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .info-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- 頂部導航欄 -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand" onclick="switchPage('home'); return false;">
+            <div class="navbar-logo">
+                <svg viewBox="230 0 500 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <image href="https://upload.wikimedia.org/wikipedia/commons/e/ed/Coat_of_arms_of_the_lands_of_the_Bohemian_Crown.svg"
+                               x="0" y="0" width="1400" height="504"
+                               preserveAspectRatio="xMidYMid meet" transform="translate(-200,-72)" />
+                    </g>
+                </svg>
+            </div>
+            <span class="navbar-title">奧地利 ODL 華人團</span>
+        </a>
+        <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" placeholder="搜尋文檔...">
+        </div>
+    </nav>
+
+    <!-- ===== 首頁 ===== -->
+    <div id="home-page" class="page active">
+        <div class="container">
+            <!-- 側邊欄 -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">快速入門</div>
+                    <ul class="sidebar-nav">
+                        <li>
+                            <a href="#" class="active" style="--item-color: var(--color-blue-500)" onclick="switchPage('home'); return false;">
+                                <div class="sidebar-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                        <polyline points="9 22 9 12 15 12 15 22"/>
+                                    </svg>
+                                </div>
+                                <span class="sidebar-item-text">首頁</span>
+                                <svg class="sidebar-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-nav-text-only">
+                                <span class="sidebar-item-text">暫定</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-nav-text-only">
+                                <span class="sidebar-item-text">暫定</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- 主內容區 -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <!-- Hero 區域 -->
+                    <section class="hero">
+                        <div class="hero-grid-bg"></div>
+                        <h1 class="hero-title">奧地利 ODL 華人團</h1>
+                        <p class="hero-description">奧地利 ODL 華人團的官方 Wiki 文檔中心。</p>
+                    </section>
+
+                    <!-- 導航卡片網格 - 主要功能 -->
+                    <div class="nav-grid">
+                        <div class="nav-card theme-blue" onclick="switchPage('overview')">
+                            <div class="nav-card-bracket nav-card-bracket-top-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-top-right"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-right"></div>
+                            <div class="nav-card-inner">
+                                <div class="nav-card-gradient"></div>
+                                <div class="nav-card-content">
+                                    <div class="nav-card-header">
+                                        <div class="nav-card-icon-box">
+                                            <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                <polyline points="14 2 14 8 20 8"/>
+                                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                                <polyline points="10 9 9 9 8 9"/>
+                                            </svg>
+                                            <div class="nav-card-glow"></div>
+                                        </div>
+                                        <h2 class="nav-card-title">概述</h2>
+                                    </div>
+                                    <p class="nav-card-description">了解奧地利 ODL 華人團的基本信息。</p>
+                                    <div class="nav-card-footer">
+                                        <span class="nav-card-footer-text">查看概述</span>
+                                        <svg class="nav-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav-card theme-orange">
+                            <div class="nav-card-bracket nav-card-bracket-top-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-top-right"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-right"></div>
+                            <div class="nav-card-inner">
+                                <div class="nav-card-gradient"></div>
+                                <div class="nav-card-content">
+                                    <div class="nav-card-header">
+                                        <div class="nav-card-icon-box">
+                                            <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                                <circle cx="9" cy="7" r="4"/>
+                                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                            </svg>
+                                            <div class="nav-card-glow"></div>
+                                        </div>
+                                        <h2 class="nav-card-title">連隊介紹</h2>
+                                    </div>
+                                    <p class="nav-card-description">查看連隊組織架構、成員信息與活動記錄。</p>
+                                    <div class="nav-card-footer">
+                                        <span class="nav-card-footer-text">查看連隊</span>
+                                        <svg class="nav-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav-card theme-red">
+                            <div class="nav-card-bracket nav-card-bracket-top-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-top-right"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-right"></div>
+                            <div class="nav-card-inner">
+                                <div class="nav-card-gradient"></div>
+                                <div class="nav-card-content">
+                                    <div class="nav-card-header">
+                                        <div class="nav-card-icon-box">
+                                            <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                            </svg>
+                                            <div class="nav-card-glow"></div>
+                                        </div>
+                                        <h2 class="nav-card-title">部門介紹</h2>
+                                    </div>
+                                    <p class="nav-card-description">了解各部門職能、負責人與工作流程。</p>
+                                    <div class="nav-card-footer">
+                                        <span class="nav-card-footer-text">查看部門</span>
+                                        <svg class="nav-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav-card theme-cyan">
+                            <div class="nav-card-bracket nav-card-bracket-top-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-top-right"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-right"></div>
+                            <div class="nav-card-inner">
+                                <div class="nav-card-gradient"></div>
+                                <div class="nav-card-content">
+                                    <div class="nav-card-header">
+                                        <div class="nav-card-icon-box">
+                                            <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                <polyline points="14 2 14 8 20 8"/>
+                                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                                <polyline points="10 9 9 9 8 9"/>
+                                            </svg>
+                                            <div class="nav-card-glow"></div>
+                                        </div>
+                                        <h2 class="nav-card-title">軍官/士官介紹</h2>
+                                    </div>
+                                    <p class="nav-card-description">團部的工作人員介紹。</p>
+                                    <div class="nav-card-footer">
+                                        <span class="nav-card-footer-text">查看介紹</span>
+                                        <svg class="nav-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 分隔線 -->
+                    <div class="section-divider">
+                        <div class="section-divider-line"></div>
+                        <span class="section-divider-text">資源</span>
+                        <div class="section-divider-line-full"></div>
+                    </div>
+
+                    <!-- 導航卡片網格 - 資源 -->
+                    <div class="nav-grid">
+                        <div class="nav-card theme-green">
+                            <div class="nav-card-bracket nav-card-bracket-top-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-top-right"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-right"></div>
+                            <div class="nav-card-inner">
+                                <div class="nav-card-gradient"></div>
+                                <div class="nav-card-content">
+                                    <div class="nav-card-header">
+                                        <div class="nav-card-icon-box">
+                                            <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                <polyline points="14 2 14 8 20 8"/>
+                                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                                <line x1="9" y1="15" x2="15" y2="15"/>
+                                            </svg>
+                                            <div class="nav-card-glow"></div>
+                                        </div>
+                                        <h2 class="nav-card-title">團部資料庫</h2>
+                                    </div>
+                                    <p class="nav-card-description">軍銜、連隊晉升、勳章等。</p>
+                                    <div class="nav-card-footer">
+                                        <span class="nav-card-footer-text">查看資料庫</span>
+                                        <svg class="nav-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav-card theme-purple">
+                            <div class="nav-card-bracket nav-card-bracket-top-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-top-right"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-left"></div>
+                            <div class="nav-card-bracket nav-card-bracket-bottom-right"></div>
+                            <div class="nav-card-inner">
+                                <div class="nav-card-gradient"></div>
+                                <div class="nav-card-content">
+                                    <div class="nav-card-header">
+                                        <div class="nav-card-icon-box">
+                                            <svg class="nav-card-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
+                                                <path d="M10 15l5-3-5-3v6z"/>
+                                            </svg>
+                                            <div class="nav-card-glow"></div>
+                                        </div>
+                                        <h2 class="nav-card-title">戰績精華</h2>
+                                    </div>
+                                    <p class="nav-card-description">收錄各種最精彩的表現。</p>
+                                    <div class="nav-card-footer">
+                                        <span class="nav-card-footer-text">查看精華</span>
+                                        <svg class="nav-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ===== 概述頁面 ===== -->
+    <div id="overview-page" class="page">
+        <!-- 麵包屑導航 -->
+        <div class="breadcrumb">
+            <a onclick="switchPage('home'); return false;">首頁</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>概述</span>
+        </div>
+
+        <!-- 主內容區 -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- 返回按鈕 -->
+                <button class="back-button" onclick="switchPage('home')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                    返回首頁
+                </button>
+
+                <!-- Hero 圖片區域 -->
+                <section class="hero-section">
+                    <div class="hero-image-container">
+                        <div class="hero-grid-bg"></div>
+                        <img src="https://images.unsplash.com/photo-1542259681-d4cd71d2a167?w=1280&h=400&fit=crop" 
+                             alt="概述封面圖" 
+                             class="hero-image">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-bracket hero-bracket-top-left"></div>
+                        <div class="hero-bracket hero-bracket-top-right"></div>
+                        <div class="hero-bracket hero-bracket-bottom-left"></div>
+                        <div class="hero-bracket hero-bracket-bottom-right"></div>
+                        <div class="hero-title-container">
+                            <h1 class="hero-title-overview">概述</h1>
+                            <p class="hero-subtitle">Overview · 奧地利 ODL 華人團</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 內容區域 -->
+                <section class="content-section">
+                    <div class="intro-section">
+                        <h2 class="section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                            團體介紹
+                        </h2>
+                        
+                        <div class="intro-text">
+                            <p>歡迎來到奧地利 ODL 華人團的官方文檔中心。本頁面提供團體的完整概述，包括組織架構、成員資訊、活動記錄等核心內容。</p>
+                            
+                            <p>奧地利 ODL 華人團成立於遊戲早期，致力於為華語玩家提供一個友好的遊戲環境。我們定期組織團隊活動、訓練課程，並積極參與遊戲內的各種挑戰。</p>
+                            
+                            <p>無論您是新加入的成員還是資深玩家，都可以在這裡找到所需的資訊。我們的文檔會持續更新，確保內容的準確性和完整性。</p>
+                        </div>
+
+                        <div class="tag-container">
+                            <span class="tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                組織架構
+                            </span>
+                            <span class="tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                活動記錄
+                            </span>
+                            <span class="tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                最新更新
+                            </span>
+                        </div>
+                    </div>
+
+                    <aside>
+                        <div class="info-card">
+                            <h3 class="info-card-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                基本資訊
+                            </h3>
+                            <div class="info-card-content">
+                                <p>成立時間：2024 年</p>
+                                <p>所屬伺服器：奧地利</p>
+                                <p>主要語言：中文</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3 class="info-card-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                成員統計
+                            </h3>
+                            <div class="info-card-content">
+                                <p>活躍成員：持續更新中</p>
+                                <p>軍官團隊：持續更新中</p>
+                                <p>新人歡迎加入</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3 class="info-card-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                最近更新
+                            </h3>
+                            <div class="info-card-content">
+                                <p>文檔系統上線</p>
+                                <p>持續完善中</p>
+                            </div>
+                        </div>
+                    </aside>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="#">使用條款</a></li>
+                <li><a href="#">隱私政策</a></li>
+                <li><a href="#">聯絡我們</a></li>
+                <li><a href="#">GitHub</a></li>
+            </ul>
+            <p class="footer-copyright">© 2024 奧地利 ODL 華人團。保留所有權利。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 頁面切換功能
+        function switchPage(pageName) {
+            // 隱藏所有頁面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // 顯示目標頁面
+            const targetPage = document.getElementById(pageName + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // 更新側邊欄 active 狀態
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 滾動到頂部
+            window.scrollTo(0, 0);
+
+            // 更新瀏覽器標題
+            if (pageName === 'home') {
+                document.title = '奧地利 ODL 華人團 - Wiki 文檔中心';
+            } else if (pageName === 'overview') {
+                document.title = '概述 - 奧地利 ODL 華人團';
+            }
+
+            console.log('切換到頁面:', pageName);
+        }
+
+        // 搜尋框功能
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            console.log('搜尋:', searchTerm);
+        });
+
+        // 導航卡片點擊效果
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.nav-card-title').textContent;
+                console.log('導航卡片點擊:', title);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+              <script>
+                              function switchPage(pageName) {
+    // 隱藏所有頁面
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    // 顯示目標頁面
+    document.getElementById(pageName + '-page').classList.add('active');
+}
+
+
+              </script>
+                        </body>
+                        </html>
