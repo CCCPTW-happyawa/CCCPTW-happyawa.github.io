@@ -1,0 +1,8 @@
+```
+# Web server configuration
+.htaccess
+nginx.conf.example
+
+# Routing documentation
+ROUTING_GUIDE.md
+```

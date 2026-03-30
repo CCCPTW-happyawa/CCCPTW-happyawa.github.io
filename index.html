@@ -4,9 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>奧地利 ODL 華人團 - Wiki 文檔中心</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- 本地字體優先，Google Fonts 作為 fallback -->
+    <style>
+        /* 定義本地字體 fallback */
+        @font-face {
+            font-family: 'JetBrains Mono Fallback';
+            src: local('Courier New'), local('Consolas'), local('Monaco'), local('monospace');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono Fallback';
+            src: local('Courier New Bold'), local('Consolas Bold'), local('monospace');
+            font-weight: 700;
+            font-style: normal;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link id="google-fonts-link" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // 字體加載失敗時自動切換到本地 fallback
+        (function() {
+            var fontLink = document.getElementById('google-fonts-link');
+            var fontLoaded = false;
+            var timeout = setTimeout(function() {
+                if (!fontLoaded) {
+                    console.warn('Google Fonts 加載超時，使用本地字體');
+                    fontLink.disabled = true;
+                    document.documentElement.style.setProperty('--font-mono', "'JetBrains Mono Fallback', 'Courier New', monospace");
+                }
+            }, 3000); // 3 秒超時
+            
+            // 檢測字體是否加載成功
+            if (document.fonts) {
+                document.fonts.ready.then(function() {
+                    fontLoaded = true;
+                    clearTimeout(timeout);
+                });
+            }
+            
+            // 監聽 link 加載錯誤
+            fontLink.onerror = function() {
+                console.error('Google Fonts 加載失敗，使用本地字體');
+                fontLink.disabled = true;
+                document.documentElement.style.setProperty('--font-mono', "'JetBrains Mono Fallback', 'Courier New', monospace");
+                clearTimeout(timeout);
+            };
+        })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -1157,9 +1203,20 @@
             <div class="navbar-logo">
                 <svg viewBox="230 0 500 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <g>
-                        <image href="https://upload.wikimedia.org/wikipedia/commons/e/ed/Coat_of_arms_of_the_lands_of_the_Bohemian_Crown.svg"
+                        <!-- 使用內聯 SVG 作為 fallback，避免外部圖片 404 -->
+                        <defs>
+                            <!-- 簡化的徽章圖案 fallback -->
+                            <symbol id="logo-fallback" viewBox="0 0 1400 504">
+                                <rect x="200" y="72" width="1000" height="360" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <text x="700" y="280" text-anchor="middle" font-size="80" fill="currentColor" font-family="monospace">ODL</text>
+                            </symbol>
+                        </defs>
+                        <image id="logo-image" 
+                               href="https://upload.wikimedia.org/wikipedia/commons/e/ed/Coat_of_arms_of_the_lands_of_the_Bohemian_Crown.svg"
                                x="0" y="0" width="1400" height="504"
-                               preserveAspectRatio="xMidYMid meet" transform="translate(-200,-72)" />
+                               preserveAspectRatio="xMidYMid meet" transform="translate(-200,-72)"
+                               onerror="this.style.display='none'; document.getElementById('logo-fallback-use').style.display='block';"/>
+                        <use id="logo-fallback-use" href="#logo-fallback" style="display:none;"/>
                     </g>
                 </svg>
             </div>
@@ -1722,6 +1779,54 @@
         </main>
     </div>
 
+    <!-- ===== 404 錯誤頁面 ===== -->
+    <div id="error-404-page" class="page" role="main" aria-label="404 錯誤頁面">
+        <div class="container">
+            <!-- 側邊欄 -->
+            <aside class="sidebar" aria-label="側邊導航">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">側邊欄</div>
+                    <ul class="sidebar-nav">
+                        <li>
+                            <a href="#" style="--item-color: var(--color-blue-500)" onclick="switchPage('home'); return false;">
+                                <div class="sidebar-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                        <polyline points="9 22 9 12 15 12 15 22"/>
+                                    </svg>
+                                </div>
+                                <span class="sidebar-item-text">首頁</span>
+                                <svg class="sidebar-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            
+            <!-- 主內容區 -->
+            <main class="main-content" role="main">
+                <div class="content-wrapper">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center;">
+                        <h1 style="font-size: 8rem; font-weight: 700; color: var(--color-blue-500); margin-bottom: var(--spacing-4);">404</h1>
+                        <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: var(--spacing-4);">頁面未找到</h2>
+                        <p style="color: var(--text-secondary); font-size: 1.125rem; max-width: 500px; margin-bottom: var(--spacing-6);">
+                            抱歉，您訪問的路徑 <code id="invalid-path" style="background: var(--bg-secondary); padding: var(--spacing-1) var(--spacing-2); border-radius: 4px; color: var(--color-blue-500);"></code> 不存在。
+                        </p>
+                        <button onclick="switchPage('home')" style="display: inline-flex; align-items: center; gap: var(--spacing-2); padding: var(--spacing-3) var(--spacing-6); background: var(--color-blue-500); color: white; border: none; border-radius: 4px; font-family: var(--font-mono); font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all var(--transition-fast);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;" aria-hidden="true">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                            返回首頁
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
     <!-- 頁腳 -->
     <footer class="footer" role="contentinfo">
         <div class="footer-content">
@@ -1738,6 +1843,14 @@
     <script>
         // 頁面切換功能
         function switchPage(pageName) {
+            // 驗證頁面是否存在
+            const validPages = ['home', 'overview', 'company'];
+            if (!validPages.includes(pageName)) {
+                console.warn('無效的頁面名稱:', pageName, '，將導向首頁');
+                show404Page(pageName);
+                pageName = 'home';
+            }
+            
             // 隱藏所有頁面
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -1747,6 +1860,10 @@
             const targetPage = document.getElementById(pageName + '-page');
             if (targetPage) {
                 targetPage.classList.add('active');
+            } else {
+                console.error('找不到頁面:', pageName + '-page');
+                show404Page(pageName);
+                return;
             }
 
             // 更新側邊欄 active 狀態
@@ -1775,6 +1892,27 @@
 
             // 更新 URL hash（可選）
             history.pushState({ page: pageName }, '', `#${pageName}`);
+        }
+        
+        // 顯示 404 錯誤頁面
+        function show404Page(requestedPath) {
+            // 隱藏所有頁面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 顯示 404 頁面
+            const errorPage = document.getElementById('error-404-page');
+            if (errorPage) {
+                errorPage.classList.add('active');
+                // 更新 404 頁面的訊息
+                const pathElement = document.getElementById('invalid-path');
+                if (pathElement) {
+                    pathElement.textContent = requestedPath || '未知路徑';
+                }
+            }
+            
+            document.title = '404 - 頁面未找到 | 奧地利 ODL 華人團';
         }
 
         // 搜尋框功能
