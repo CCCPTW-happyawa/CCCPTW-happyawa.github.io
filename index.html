@@ -1026,6 +1026,379 @@
             margin-top: var(--spacing-8);
         }
 
+        /* ===== 軍官/士官介紹頁面樣式 ===== */
+        .officer-list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: var(--spacing-8);
+        }
+
+        .officer-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .officer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .officer-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: 0;
+            transition: all 0.4s ease;
+        }
+
+        .officer-card:hover {
+            transform: translateX(4px);
+        }
+
+        .officer-card.gold::before {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+        }
+        .officer-card.silver::before {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.05) 0%, rgba(192, 192, 192, 0.02) 100%);
+        }
+        .officer-card.bronze::before {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.05) 0%, rgba(205, 127, 50, 0.02) 100%);
+        }
+        .officer-card.blue::before {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+        }
+
+        .officer-card.gold:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+        .officer-card.silver:hover {
+            border-color: rgba(192, 192, 192, 0.5);
+        }
+        .officer-card.bronze:hover {
+            border-color: rgba(205, 127, 50, 0.5);
+        }
+        .officer-card.blue:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .officer-card.gold:hover::after {
+            background: radial-gradient(ellipse at 0% 50%, rgba(212, 175, 55, 0.12) 0%, transparent 50%);
+        }
+        .officer-card.silver:hover::after {
+            background: radial-gradient(ellipse at 0% 50%, rgba(192, 192, 192, 0.12) 0%, transparent 50%);
+        }
+        .officer-card.bronze:hover::after {
+            background: radial-gradient(ellipse at 0% 50%, rgba(205, 127, 50, 0.12) 0%, transparent 50%);
+        }
+        .officer-card.blue:hover::after {
+            background: radial-gradient(ellipse at 0% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%);
+        }
+
+        .officer-avatar {
+            width: 220px;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.015);
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-frame {
+            width: 90px;
+            height: 90px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: all 0.4s ease;
+        }
+
+        .avatar-frame::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .officer-card:hover .avatar-frame {
+            transform: scale(1.08);
+        }
+
+        .officer-card.gold:hover .avatar-frame {
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+        .officer-card.gold:hover .avatar-frame::before {
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .officer-card.silver:hover .avatar-frame {
+            border-color: rgba(192, 192, 192, 0.6);
+        }
+        .officer-card.silver:hover .avatar-frame::before {
+            background: radial-gradient(circle, rgba(192, 192, 192, 0.4) 0%, rgba(192, 192, 192, 0.1) 50%, transparent 70%);
+            box-shadow: 0 0 30px rgba(192, 192, 192, 0.5), inset 0 0 20px rgba(192, 192, 192, 0.15);
+        }
+        .officer-card.bronze:hover .avatar-frame {
+            border-color: rgba(205, 127, 50, 0.6);
+        }
+        .officer-card.bronze:hover .avatar-frame::before {
+            background: radial-gradient(circle, rgba(205, 127, 50, 0.4) 0%, rgba(205, 127, 50, 0.1) 50%, transparent 70%);
+            box-shadow: 0 0 30px rgba(205, 127, 50, 0.5), inset 0 0 20px rgba(205, 127, 50, 0.15);
+        }
+        .officer-card.blue:hover .avatar-frame {
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+        .officer-card.blue:hover .avatar-frame::before {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), inset 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .officer-card:hover .avatar-frame img {
+            filter: grayscale(0%);
+        }
+
+        .officer-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .officer-card.gold .officer-name {
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+        .officer-card.silver .officer-name {
+            color: #c0c0c0;
+            text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+        }
+        .officer-card.bronze .officer-name {
+            color: #cd7f32;
+            text-shadow: 0 0 15px rgba(205, 127, 50, 0.5);
+        }
+        .officer-card.blue .officer-name {
+            color: #3b82f6;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .officer-rank {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 4px 12px;
+            border: 1px solid;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .officer-card.gold .officer-rank {
+            color: #d4af37;
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(212, 175, 55, 0.08);
+        }
+        .officer-card.silver .officer-rank {
+            color: #c0c0c0;
+            border-color: rgba(192, 192, 192, 0.4);
+            background: rgba(192, 192, 192, 0.08);
+        }
+        .officer-card.bronze .officer-rank {
+            color: #cd7f32;
+            border-color: rgba(205, 127, 50, 0.4);
+            background: rgba(205, 127, 50, 0.08);
+        }
+        .officer-card.blue .officer-rank {
+            color: #3b82f6;
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .officer-info {
+            flex: 1;
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .officer-title {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .officer-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .officer-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .stat-block {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-emphasized);
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-block:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .stat-block-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-block-value {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .officer-card.gold .stat-block {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+        .officer-card.gold .stat-block-value {
+            color: rgba(212, 175, 55, 0.9);
+        }
+        .officer-card.gold .stat-block:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .officer-card.silver .stat-block {
+            border-color: rgba(192, 192, 192, 0.15);
+        }
+        .officer-card.silver .stat-block-value {
+            color: rgba(192, 192, 192, 0.9);
+        }
+        .officer-card.silver .stat-block:hover {
+            border-color: rgba(192, 192, 192, 0.4);
+            background: rgba(192, 192, 192, 0.05);
+        }
+
+        .officer-card.bronze .stat-block {
+            border-color: rgba(205, 127, 50, 0.15);
+        }
+        .officer-card.bronze .stat-block-value {
+            color: rgba(205, 127, 50, 0.9);
+        }
+        .officer-card.bronze .stat-block:hover {
+            border-color: rgba(205, 127, 50, 0.4);
+            background: rgba(205, 127, 50, 0.05);
+        }
+
+        .officer-card.blue .stat-block {
+            border-color: rgba(59, 130, 246, 0.15);
+        }
+        .officer-card.blue .stat-block-value {
+            color: rgba(59, 130, 246, 0.9);
+        }
+        .officer-card.blue .stat-block:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .officer-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .officer-avatar {
+                width: 100%;
+                min-width: 100%;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 16px;
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            
+            .avatar-frame {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 0;
+            }
+            
+            .officer-info {
+                padding: 20px;
+            }
+
+            .officer-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .dept-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -1753,7 +2126,7 @@
                             </div>
                         </div>
 
-                        <div class="nav-card theme-cyan" role="button" tabindex="0" aria-label="查看軍官士官介紹">
+                        <div class="nav-card theme-cyan" onclick="switchPage('officer')" role="button" tabindex="0" aria-label="查看軍官士官介紹">
                             <div class="nav-card-bracket nav-card-bracket-top-left" aria-hidden="true"></div>
                             <div class="nav-card-bracket nav-card-bracket-top-right" aria-hidden="true"></div>
                             <div class="nav-card-bracket nav-card-bracket-bottom-left" aria-hidden="true"></div>
@@ -2281,6 +2654,320 @@
         </main>
     </div>
 
+    <!-- ===== 軍官/士官介紹頁面 ===== -->
+    <div id="officer-page" class="page" role="main" aria-label="軍官/士官介紹頁面">
+        <!-- 麵包屑導航 -->
+        <nav class="breadcrumb" aria-label="麵包屑導航">
+            <a onclick="switchPage('home'); return false;">首頁</a>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <span>軍官/士官介紹</span>
+        </nav>
+
+        <!-- 主內容區 -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- 返回按鈕 -->
+                <button class="back-button" onclick="switchPage('home')" aria-label="返回首頁">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                    返回首頁
+                </button>
+
+                <!-- Hero 圖片區域 -->
+                <section class="hero-section" aria-labelledby="officer-title">
+                    <div class="hero-image-container">
+                        <div class="hero-grid-bg" aria-hidden="true"></div>
+                        <img src="./image02.png"
+                             alt="軍官/士官介紹封面圖"
+                             class="hero-image"
+                             loading="eager"
+                             fetchpriority="high">
+                        <div class="hero-overlay" aria-hidden="true"></div>
+                        <div class="hero-bracket hero-bracket-top-left" aria-hidden="true"></div>
+                        <div class="hero-bracket hero-bracket-top-right" aria-hidden="true"></div>
+                        <div class="hero-bracket hero-bracket-bottom-left" aria-hidden="true"></div>
+                        <div class="hero-bracket hero-bracket-bottom-right" aria-hidden="true"></div>
+                        <div class="hero-title-container">
+                            <h1 id="officer-title" class="hero-title-overview">軍官/士官介紹</h1>
+                            <p class="hero-subtitle">Officer & NCO Introduction · 奧地利 ODL 華人團</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 內容區域 -->
+                <section class="content-section">
+                    <!-- 軍官列表 -->
+                    <div class="officer-list-container">
+                        <!-- Officer Card 1 - 上校 -->
+                        <div class="officer-card gold">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Oberst Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Oberst</h3>
+                                    <span class="officer-rank">上校</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">軍團指揮官</h4>
+                                <p class="officer-desc">
+                                    軍團最高指揮官，負責整體戰略規劃與重大決策。帶領 ODL 成為奧地利最優秀的華人軍團之一，在多次戰役中展現卓越的領導能力。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">參謀部</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">軍團創始人</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">指揮官</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 2 - 上校 -->
+                        <div class="officer-card gold">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Commander Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Commander</h3>
+                                    <span class="officer-rank">上校</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">副指揮官</h4>
+                                <p class="officer-desc">
+                                    協助指揮官管理軍團日常事務，負責戰役協調與人員調度。經驗豐富的戰場指揮官，擅長戰術部署與團隊配合。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">參謀部</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">戰場指揮官</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">副指揮</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 3 - 少校 -->
+                        <div class="officer-card silver">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Major Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Major</h3>
+                                    <span class="officer-rank">少校</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">人事主管</h4>
+                                <p class="officer-desc">
+                                    負責軍團成員招募、審核與晉升考核。致力於維護軍團紀律與人員素質，確保每一位成員都能找到適合的位置。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">人事部</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">人事主管</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">行政管理</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 4 - 上尉 -->
+                        <div class="officer-card silver">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Captain Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Captain</h3>
+                                    <span class="officer-rank">上尉</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">訓練主管</h4>
+                                <p class="officer-desc">
+                                    組織日常訓練與新兵營課程。確保所有成員掌握遊戲機制與團隊配合，提升軍團整體戰鬥力。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">訓練部</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">訓練教官</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">戰術指導</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 5 - 男爵 -->
+                        <div class="officer-card bronze">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Freiherr Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Freiherr, JOJO</h3>
+                                    <span class="officer-rank">男爵</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">燧發槍營 連長</h4>
+                                <p class="officer-desc">
+                                    燧發槍營「Von Westfalen」連長，負責新兵集訓與基礎教育。帶領最多活躍成員的連隊，是無數精英和老兵的起源。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">燧發槍營</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">新兵導師</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">新兵訓練</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 6 - 伯爵 -->
+                        <div class="officer-card bronze">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Graf Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Graf, fishbone9487</h3>
+                                    <span class="officer-rank">伯爵</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">獵兵/擲彈兵營 連長</h4>
+                                <p class="officer-desc">
+                                    獵兵營「Von Chrudim」與擲彈兵營「Von Böhmen」連長。經驗豐富的老兵，帶領軍團中堅力量與精銳部隊在戰場上奮勇衝鋒。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">獵兵/擲彈兵營</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">紅溫石斑魚</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">連隊長</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 7 - 中尉 -->
+                        <div class="officer-card blue">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Lt Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Lt</h3>
+                                    <span class="officer-rank">中尉</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">後勤主管</h4>
+                                <p class="officer-desc">
+                                    負責物資管理、裝備補給及技術支持。是軍團堅實的後盾，保障前線作戰無後顧之憂。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">後勤部</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">後勤專家</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">技術支援</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Officer Card 8 - 士官長 -->
+                        <div class="officer-card blue">
+                            <div class="officer-avatar">
+                                <div class="avatar-frame">
+                                    <img src="./image01.png" alt="Sgt Avatar">
+                                </div>
+                                <div>
+                                    <h3 class="officer-name">Sgt</h3>
+                                    <span class="officer-rank">士官長</span>
+                                </div>
+                            </div>
+                            <div class="officer-info">
+                                <h4 class="officer-title">宣傳主管</h4>
+                                <p class="officer-desc">
+                                    負責軍團宣傳物料製作、戰績記錄及內容創作。用鏡頭和文字記錄軍團的榮光，提升軍團知名度與凝聚力。
+                                </p>
+                                <div class="officer-stats">
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">所屬部門</span>
+                                        <span class="stat-block-value">宣傳部</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">稱號</span>
+                                        <span class="stat-block-value">媒體製作</span>
+                                    </div>
+                                    <div class="stat-block">
+                                        <span class="stat-block-label">職責</span>
+                                        <span class="stat-block-value">宣傳創作</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
     <!-- ===== 404 錯誤頁面 ===== -->
     <div id="error-404-page" class="page" role="main" aria-label="404 錯誤頁面">
         <div class="container">
@@ -2346,7 +3033,7 @@
         // 頁面切換功能
         function switchPage(pageName) {
             // 驗證頁面是否存在
-            const validPages = ['home', 'overview', 'company', 'department'];
+            const validPages = ['home', 'overview', 'company', 'department', 'officer'];
             if (!validPages.includes(pageName)) {
                 console.warn('無效的頁面名稱:', pageName, '，將導向首頁');
                 show404Page(pageName);
@@ -2389,7 +3076,8 @@
                 'home': '奧地利 ODL 華人團 - Wiki 文檔中心',
                 'overview': '概述 - 奧地利 ODL 華人團',
                 'company': '連隊介紹 - 奧地利 ODL 華人團',
-                'department': '部門介紹 - 奧地利 ODL 華人團'
+                'department': '部門介紹 - 奧地利 ODL 華人團',
+                'officer': '軍官/士官介紹 - 奧地利 ODL 華人團'
             };
             document.title = titles[pageName] || titles['home'];
 
