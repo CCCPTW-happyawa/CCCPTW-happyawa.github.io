@@ -1,1 +1,39 @@
-Nothing should be ignored since only a source file (index.html) was modified and there are no build artifacts, dependencies, or temporary files in the changes.
+# Web artifacts
+*.html.swp
+*.html.tmp
+*.tmp
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Coverage reports
+coverage/
+htmlcov/
+*.coverage
+
+# Build outputs
+dist/
+build/
+target/
+
+# Dependencies
+node_modules/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.venv/
+venv/
+.julia/
+zig*/
